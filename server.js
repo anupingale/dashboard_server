@@ -19,8 +19,8 @@ const getUsers = function(req, res) {
 };
 
 const addUser = function(req, res) {
-  const name = req.body.username;
-  const content = { name };
+  const username = req.body.username;
+  const content = { username };
   connection.query('insert into users set ?', content, function(err, result) {
     if (err) console.log(err);
     console.log('in add user');
