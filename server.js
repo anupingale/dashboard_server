@@ -11,15 +11,9 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE_NAME
 });
 
-connection.connect(function(err) {
-  if (err) console.log(err);
-  console.log('connected successfully');
-});
-
 const getUsers = function(req, res) {
   connection.query('select name as username from users', function(err, users) {
     if (err) console.log(err);
-    console.log('in get user');
     res.send(users);
   });
 };
@@ -33,6 +27,7 @@ const addUser = function(req, res) {
   });
 };
 
+app.use(express.static(__dirname + '/react_dashboard/build'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/getusers', getUsers);
