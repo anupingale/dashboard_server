@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 });
 
 const getUsers = function(req, res) {
-  connection.query('select name as username from users', function(err, users) {
+  connection.query('select username from users', function(err, users) {
     if (err) console.log(err);
     res.send(users);
   });
