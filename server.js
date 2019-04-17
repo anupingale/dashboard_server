@@ -23,6 +23,7 @@ const addUser = function(req, res) {
   const content = { name };
   connection.query('insert into users set ?', content, function(err, result) {
     if (err) console.log(err);
+    console.log('in add user');
     getUsers(req, res);
   });
 };
